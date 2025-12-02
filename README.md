@@ -14,7 +14,7 @@ I needed a tool that automates the Bitlocker Process to a degree so that's what 
 - final Output that displays: Label, SavePath, VolumeStatus, Protectionstatus and EncyrptionPercentage
 
 # Drive Selection Filter
-  Drive Selection doesn't display and filters the following:
+  Drive Selection doesn't display/filters the following:
   - Disks with OperationalStatus "No Media"
   - Disks with NumberOfPartitions "0"
   - Disks with DriveLetter "C" in order to avoid clearing you OS Drive
