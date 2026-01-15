@@ -106,7 +106,7 @@ if([Environment]::Is64BitProcess){
         
         #region format, partition, name
         Clear-Disk -Number $Partition.DiskNumber -RemoveData -Confirm:$false
-        if((Get-Disk | Where-Object{$_.DiskNumber -eq $Partition.DiskNumber}).OperationalStatus -ne "Online"){
+        if((Get-Disk | Where-Object{$_.DiskNumber -eq $Partition.DiskNumber}).PartitionStyle -eq "RAW"){
             Initialize-Disk -Number $Partition.DiskNumber -PartitionStyle GPT -Confirm:$false
         }
         New-Partition -DiskNumber $Partition.DiskNumber -UseMaximumSize -AssignDriveLetter | Out-Null
@@ -166,6 +166,7 @@ Name		     : $($NameBox.Text)
 Savepath .txt	     : C:\Users\$env:Username\Downloads\$($NameBox.Text)_Bitlocker_$(Get-Date -Format "dd_MM_yyyy").txt
 VolumeStatus	     : $($BitlockerVolume.VolumeStatus)
 ProtectionStatus     : $($BitlockerVolume.ProtectionStatus)
+
 EncryptionPercentage : $($BitlockerVolume.EncryptionPercentage)%
 "@ -ForegroundColor Green
         #endregion
